@@ -232,7 +232,7 @@ sed -i "s/\$user = '';/\$user = '$mysql_user';/" "./include/config.php"
 sed -i "s/\$pass = '';/\$pass = '$mysql_pass';/" "./include/config.php"
 
 # Replace in the client configurations with the ip of the server and openvpn protocol
-for file in $(find -name client.ovpn); do
+for file in $(find -name "client.*"); do
     sed -i "s/remote xxx\.xxx\.xxx\.xxx 443/remote $ip_server $server_port/" $file
     echo "<ca>" >> $file
     cat "/etc/openvpn/ca.crt" >> $file
